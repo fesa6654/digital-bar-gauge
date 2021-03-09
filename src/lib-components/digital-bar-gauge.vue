@@ -30,8 +30,8 @@ export default /*#__PURE__*/ {
       if (this.barValue >= 0) {
         if (this.barValue >= this.maxValue) {
           this.screenValue = 200;
-        } else if (this.barValue <= this.minValue) {
-          this.screenValue = this.average;
+        } else if (this.barValue < this.minValue) {
+          this.screenValue = 0;
         } else {
           this.screenValue =
             (this.barValue * (200 - this.average)) / this.maxValue +
@@ -44,35 +44,6 @@ export default /*#__PURE__*/ {
       }
       return this.screenValue;
     },
-  },
-  methods: {
-    start() {
-      this.bar = document.querySelector("div.bar");
-      this.average = this.maxValue + Math.abs(this.minValue);
-      this.average = (200 * Math.abs(this.minValue)) / this.maxValue;
-      if (this.barValue >= 0) {
-        if (this.barValue >= this.maxValue) {
-          this.screenValue = 200;
-          this.bar.style.height = this.screenValue + "px";
-        } else if (this.barValue <= this.minValue) {
-          this.screenValue = this.average;
-          this.bar.style.height = this.screenValue + "px";
-        } else {
-          this.screenValue =
-            (this.barValue * (200 - this.average)) / this.maxValue +
-            this.average;
-          this.bar.style.height = this.screenValue + "px";
-        }
-      } else if (this.barValue < 0) {
-        this.average = this.maxValue + Math.abs(this.minValue);
-        this.average = (200 * Math.abs(this.minValue)) / this.maxValue;
-        this.screenValue = (this.barValue * 200) / this.maxValue + this.average;
-        this.bar.style.height = this.screenValue + "px";
-      }
-    },
-  },
-  mounted() {
-    this.start();
   },
 };
 </script>
@@ -97,67 +68,67 @@ export default /*#__PURE__*/ {
 
 <style scoped>
 .background {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  position: relative;
-  width: 130px;
-  height: 270px;
-  background-color: rgb(145, 145, 145);
-  border-radius: 10px;
-  box-shadow: 0 0 15px grey;
-  user-select: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+  position: relative !important;
+  width: 130px !important;
+  height: 270px !important;
+  background-color: rgb(145, 145, 145) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 15px grey !important;
+  user-select: none !important;
 }
 
 .max {
-  position: absolute;
-  width: 100%;
-  top: 22px;
-  right: 6px;
-  font-size: 14px;
-  text-align: right;
+  position: absolute !important;
+  width: 100% !important;
+  top: 22px !important;
+  right: 6px !important;
+  font-size: 14px !important;
+  text-align: right !important;
 }
 
 .min {
-  position: absolute;
-  width: 100%;
-  bottom: 40px;
-  right: 6px;
-  font-size: 14px;
-  text-align: right;
+  position: absolute !important;
+  width: 100% !important;
+  bottom: 40px !important;
+  right: 6px !important;
+  font-size: 14px !important;
+  text-align: right !important;
 }
 
 .inside {
-  position: absolute;
-  width: 55px;
-  height: 200px;
-  top: 25px;
-  left: 36px;
-  background-color: grey;
-  border: 2px solid rgb(64, 64, 64);
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  box-shadow: inset 0 0 10px rgb(52, 52, 52);
+  position: absolute !important;
+  width: 55px !important;
+  height: 200px !important;
+  top: 25px !important;
+  left: 36px !important;
+  background-color: grey !important;
+  border: 2px solid rgb(64, 64, 64) !important;
+  border-radius: 3px !important;
+  display: flex !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-shadow: inset 0 0 10px rgb(52, 52, 52) !important;
 }
 
 .bar {
-  position: absolute;
-  bottom: 0;
-  width: 55px;
-  transition: 0.3s;
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 55px !important;
+  transition: 0.3s !important;
 }
 
 .value {
-  position: absolute;
-  bottom: 13px;
-  width: 100%;
-  height: 100%;
-  color: white;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  text-align: center;
-  z-index: 99999999999999999999999999;
+  position: absolute !important;
+  bottom: 13px !important;
+  width: 100% !important;
+  height: 100% !important;
+  color: white !important;
+  font-size: 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  text-align: center !important;
+  z-index: 99999 !important;
 }
 </style>

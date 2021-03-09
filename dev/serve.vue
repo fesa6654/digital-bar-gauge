@@ -12,10 +12,10 @@ export default Vue.extend({
     return {
       data: 0,
       array: [
-        { id: 1, data: 250, max: 600, min: 0, symbol: "°C" },
-        { id: 2, data: 100, max: 700, min: -10, symbol: "°F" },
-        { id: 3, data: -150, max: 800, min: -100, symbol: "V" },
-        { id: 4, data: -60, max: 800, min: -100, symbol: "M" },
+        { id: 1, data: 560, max: 600, min: 0, symbol: "°C" },
+        { id: 2, data: 615, max: 700, min: -10, symbol: "°F" },
+        { id: 3, data: 770, max: 800, min: -220, symbol: "V" },
+        { id: 4, data: 1060, max: 800, min: -300, symbol: "M" },
       ],
     };
   },
@@ -26,7 +26,7 @@ export default Vue.extend({
     refresh() {
       setInterval(() => {
         this.array.forEach((element) => {
-          element.data = element.data + 20;
+          element.data = element.data - 70;
         });
       }, 1000);
     },
