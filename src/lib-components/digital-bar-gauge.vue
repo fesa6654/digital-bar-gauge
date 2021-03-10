@@ -78,8 +78,10 @@ export default /*#__PURE__*/ {
         } else if (this.barValue > this.maxValue) {
           this.screenValue = 200;
           return this.screenValue;
-        } else if (this.barValue >= 0) {
-          this.screenValue = (200 * this.barValue) / this.maxValue;
+        } else if (this.barValue > this.minValue) {
+          this.average = (200 * this.minValue) / (this.maxValue - this.minValue)
+          this.negative = (200 * this.barValue) / (this.maxValue - this.minValue)
+          this.screenValue = this.negative - this.average;
         }
       }
       return this.screenValue;
@@ -140,7 +142,7 @@ export default /*#__PURE__*/ {
 .inside {
   position: absolute !important;
   width: 45% !important;
-  height: 72.5% !important;
+  height: 71.3% !important;
   top: 25px !important;
   left: 25px !important;
   background-color: grey !important;

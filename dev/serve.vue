@@ -15,7 +15,7 @@ export default Vue.extend({
         { id: 1, data: 560, max: 600, min: 0, symbol: "°C" },
         { id: 2, data: 615, max: 700, min: -100, symbol: "°F" },
         { id: 3, data: 350.2, max: 800.2, min: -300, symbol: "V" },
-        { id: 4, data: 700, max: 800, min: -300, symbol: "M" },
+        { id: 4, data: -100, max: 800, min: 100, symbol: "M" },
       ],
     };
   },
@@ -26,7 +26,7 @@ export default Vue.extend({
     refresh() {
       setInterval(() => {
         this.array.forEach((element) => {
-          element.data = element.data - 25.3;
+          element.data = element.data + 25;
         });
       }, 1000);
     },
