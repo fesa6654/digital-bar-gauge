@@ -2,9 +2,8 @@
 
 ### You can use this component like this below
 
-![Green](http://www.alvemsis.com/green.png)
-![Orange](http://www.alvemsis.com/orange.png)
-![Red](http://www.alvemsis.com/red.png)
+![Bar](http://www.alvemsis.com/bar.png)
+![Dynamic Bar](http://www.alvemsis.com/dynamicbar.png)
 
 ### You can use this component like this below
 
@@ -14,4 +13,6 @@
 
 ![Dynamic Code Example](http://www.alvemsis.com/dynamiccode.png)
 
-![Dynamic Code Example](http://www.alvemsis.com/dynamic.png)
+You need to send number to widget datas !
+
+Use like example code image
