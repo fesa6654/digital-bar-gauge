@@ -142,7 +142,7 @@ export default /*#__PURE__*/ {
 .inside {
   position: absolute !important;
   width: 45% !important;
-  height: 71.3% !important;
+  height: 200px !important;
   top: 25px !important;
   left: 25px !important;
   background-color: grey !important;
