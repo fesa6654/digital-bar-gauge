@@ -13,15 +13,15 @@ export default /*#__PURE__*/ {
     },
     symbol: {
       type: String,
-      default: false,
+      default: "",
     },
     normalColor: {
       type: String,
-      default: false,
+      default: 'rgb(24, 209, 39)',
     },
     date: {
       type: String,
-      default: false,
+      default: "",
     },
   },
   data() {
@@ -56,19 +56,19 @@ export default /*#__PURE__*/ {
           this.screenValue = 0;
           return this.screenValue;
         } else if (this.barValue > this.maxValue) {
-          this.screenValue = 200;
+          this.screenValue = 100;
           return this.screenValue;
         } else if (this.barValue < 0) {
           this.average = Math.abs(this.barValue) + this.minValue;
           this.screenValue =
-            (200 * Math.abs(this.average)) /
+            (100 * Math.abs(this.average)) /
             (this.maxValue + Math.abs(this.minValue));
         } else if (this.barValue >= 0) {
           this.average =
-            (200 * Math.abs(this.minValue)) /
+            (100 * Math.abs(this.minValue)) /
             (this.maxValue + Math.abs(this.minValue));
           this.negative =
-            (200 * this.barValue) / (this.maxValue + Math.abs(this.minValue));
+            (100 * this.barValue) / (this.maxValue + Math.abs(this.minValue));
           this.screenValue = this.average + this.negative;
         }
       } else if (this.minValue >= 0) {
@@ -76,11 +76,11 @@ export default /*#__PURE__*/ {
           this.screenValue = 0;
           return this.screenValue;
         } else if (this.barValue > this.maxValue) {
-          this.screenValue = 200;
+          this.screenValue = 100;
           return this.screenValue;
         } else if (this.barValue > this.minValue) {
-          this.average = (200 * this.minValue) / (this.maxValue - this.minValue)
-          this.negative = (200 * this.barValue) / (this.maxValue - this.minValue)
+          this.average = (100 * this.minValue) / (this.maxValue - this.minValue)
+          this.negative = (100 * this.barValue) / (this.maxValue - this.minValue)
           this.screenValue = this.negative - this.average;
         }
       }
@@ -98,7 +98,7 @@ export default /*#__PURE__*/ {
       <div
         class="bar"
         :style="{
-          height: barHeight + 'px',
+          height: barHeight + '%',
           backgroundColor: barStatusColor,
           boxShadow: '0 0 10px ' + barStatusColor,
         }"
