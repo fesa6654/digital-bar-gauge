@@ -1,6 +1,6 @@
 {
   "name": "digital-bar-gauge",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Digital Bar Gauge",
   "main": "dist/digital-bar-gauge.ssr.js",
   "browser": "dist/digital-bar-gauge.esm.js",
@@ -23,7 +23,12 @@
     "email": "sefaun6654@hotmail.com",
     "github": "https://github.com/fesa6654"
   },
-  "keywords": ["Front-End", "IoT Widget", "vue.js", "nuxt.js"],
+  "keywords": [
+    "Front-End",
+    "IoT Widget",
+    "vue.js",
+    "nuxt.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fesa6654/digital-bar-gauge"
