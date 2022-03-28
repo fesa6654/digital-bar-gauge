@@ -1,5 +1,5 @@
 ### This Widget For VUE.JS and NUXT.JS
-
+Just For Vue.js 2
 ### Images from Widget
 
 ![Bar](http://www.alvemsis.com/bar.png)

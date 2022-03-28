@@ -11,6 +11,7 @@ export default Vue.extend({
   data() {
     return {
       data: 0,
+      color: 10,
       array: [
         { id: 1, data: 560, max: 600, min: 0, symbol: "°C" },
         { id: 2, data: 615, max: 700, min: -100, symbol: "°F" },
@@ -28,6 +29,7 @@ export default Vue.extend({
         this.array.forEach((element) => {
           element.data = element.data + 25;
         });
+        this.color = Math.floor(Math.random() * 255);
       }, 1000);
     },
   },
@@ -38,15 +40,7 @@ export default Vue.extend({
   <div id="app">
     <div style="display: flex">
       <div v-for="(value, index) in array" :key="index">
-        <digital-bar-gauge
-          style="margin-right: 20px"
-          :maxData="value.max"
-          :minData="value.min"
-          :data="value.data"
-          :symbol="value.symbol"
-          normalColor="rgb(79, 255, 70)"
-          date="12/11/2021 16:20:40"
-        />
+        <digital-bar-gauge style="margin-right: 20px" :maxData="value.max" :minData="value.min" :data="value.data" :symbol="value.symbol" :normalColor="`rgb(79, 255, ${color})`" date="12/11/2021 16:20:40" />
       </div>
     </div>
     <!--

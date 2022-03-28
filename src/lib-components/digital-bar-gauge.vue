@@ -3,13 +3,16 @@ export default /*#__PURE__*/ {
   name: "DigitalBarGauge", // vue component name
   props: {
     maxData: {
-      default: false,
+      type: Number,
+      default: 0,
     },
     minData: {
-      default: false,
+      type: Number,
+      default: 0,
     },
     data: {
-      default: false,
+      type: Number,
+      default: 0,
     },
     symbol: {
       type: String,
@@ -17,7 +20,7 @@ export default /*#__PURE__*/ {
     },
     normalColor: {
       type: String,
-      default: 'rgb(24, 209, 39)',
+      default: "rgb(24, 209, 39)",
     },
     date: {
       type: String,
@@ -31,6 +34,7 @@ export default /*#__PURE__*/ {
       barValue: this.data,
       symbolValue: this.symbol,
       time: this.date,
+      barColor: this.normalColor,
       screenValue: 0,
       barStatus: "",
       average: 0,
@@ -38,18 +42,26 @@ export default /*#__PURE__*/ {
     };
   },
   watch: {
+    symbol: function (val) {
+      this.symbolValue = val;
+    },
+    maxData: function (val) {
+      this.maxValue = val;
+    },
+    minData: function (val) {
+      this.minValue = val;
+    },
     data: function (val) {
-      return (this.barValue = val);
+      this.barValue = val;
     },
     date: function (val) {
-      return (this.time = val);
+      this.time = val;
+    },
+    normalColor: function (val) {
+      this.barColor = val;
     },
   },
   computed: {
-    barStatusColor() {
-      this.barStatus = this.normalColor;
-      return this.barStatus;
-    },
     barHeight() {
       if (this.minValue < 0) {
         if (this.barValue <= this.minValue) {
@@ -60,15 +72,10 @@ export default /*#__PURE__*/ {
           return this.screenValue;
         } else if (this.barValue < 0) {
           this.average = Math.abs(this.barValue) + this.minValue;
-          this.screenValue =
-            (100 * Math.abs(this.average)) /
-            (this.maxValue + Math.abs(this.minValue));
+          this.screenValue = (100 * Math.abs(this.average)) / (this.maxValue + Math.abs(this.minValue));
         } else if (this.barValue >= 0) {
-          this.average =
-            (100 * Math.abs(this.minValue)) /
-            (this.maxValue + Math.abs(this.minValue));
-          this.negative =
-            (100 * this.barValue) / (this.maxValue + Math.abs(this.minValue));
+          this.average = (100 * Math.abs(this.minValue)) / (this.maxValue + Math.abs(this.minValue));
+          this.negative = (100 * this.barValue) / (this.maxValue + Math.abs(this.minValue));
           this.screenValue = this.average + this.negative;
         }
       } else if (this.minValue >= 0) {
@@ -79,8 +86,8 @@ export default /*#__PURE__*/ {
           this.screenValue = 100;
           return this.screenValue;
         } else if (this.barValue > this.minValue) {
-          this.average = (100 * this.minValue) / (this.maxValue - this.minValue)
-          this.negative = (100 * this.barValue) / (this.maxValue - this.minValue)
+          this.average = (100 * this.minValue) / (this.maxValue - this.minValue);
+          this.negative = (100 * this.barValue) / (this.maxValue - this.minValue);
           this.screenValue = this.negative - this.average;
         }
       }
@@ -99,8 +106,8 @@ export default /*#__PURE__*/ {
         class="bar"
         :style="{
           height: barHeight + '%',
-          backgroundColor: barStatusColor,
-          boxShadow: '0 0 10px ' + barStatusColor,
+          backgroundColor: barColor,
+          boxShadow: '0 0 10px ' + barColor,
         }"
       ></div>
     </div>
